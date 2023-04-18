@@ -20,4 +20,15 @@ public class PerformanceTest {
     assertThat(stats.overall().sampleTimePercentile99()).isLessThan(Duration.ofSeconds(5));
   }
 
+  @Test
+  public void testSFTPPerformance() throws IOException {
+    TestPlanStats stats = testPlan(
+            threadGroup(1, 1,
+                    new SSHSampler("Test SFTP",null)
+            )
+    ).run();
+//      assertThat(stats.overall().sampleTimePercentile99()).isLessThan(Duration.ofSeconds(5));
+
+  }
+
 }
